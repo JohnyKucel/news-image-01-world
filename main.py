@@ -273,6 +273,13 @@ def draw_cloud(cv, x, y, s, c, shade):
                  int(s * 0.08), shade)
 
 
+def draw_birds(cv, x, y, c):
+    # three small "v" birds in the hero sky; each bird is two short lines
+    for bx, by in ((x, y), (x + 30, y + 12), (x + 55, y - 2)):
+        cv.line(bx, by, bx + 6, by + 5, c)
+        cv.line(bx + 6, by + 5, bx + 12, by, c)
+
+
 def draw_plane(cv, x, y, s, body, wing, win):
     # side-view plane, nose to the right; s = fuselage length
     fy = y + int(s * 0.16)
@@ -396,6 +403,7 @@ def render():
     cv.ring(560, 178, 40, 3, GOLD_LIGHT)
     draw_cloud(cv, 330, 150, 100, CLOUD, CLOUD_SHADE)
     draw_cloud(cv, 120, 170, 90, CLOUD, CLOUD_SHADE)
+    draw_birds(cv, 440, 220, STEEL_DARK)
     # runway + grass
     cv.fill_rect(hx, hy + 268, hw, 80, GREEN)
     cv.fill_rect(hx, hy + 300, hw, 10, WHITE)
